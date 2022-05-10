@@ -1,0 +1,17 @@
+.all_cards{
+    text-align: center;
+    padding-bottom: 8px;
+    padding: auto;
+    border: 1px solid #9e2a2b;
+    border-radius: 10%;
+    cursor: default;
+    font-size: 10%;
+
+}
+
+.container{
+    overflow: hidden;
+    position: relative;    
+}
+
+

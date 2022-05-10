@@ -1,0 +1,27 @@
+body {
+    background-image: url('../Tools/neonjoysticks.jpg');
+    background-size: cover;
+    background-position: center center;
+    flex-wrap: wrap;
+    background-attachment: fixed;
+    height: 90vh;
+    justify-content: center;    
+    align-items: center;
+}
+
+.landing{
+    position: relative;      
+    padding-top: 120px;
+    top: 45%;
+    color: rgb(229, 255, 0);
+    font-family: monospace; 
+    font-size:40px;
+}
+
+.btn-explore{
+    position: relative;
+    padding-top: 40px;
+    color: fuchsia;
+    top: 45%;
+    
+}
