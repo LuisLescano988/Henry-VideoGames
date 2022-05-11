@@ -92,14 +92,14 @@ export function postGame(payload) {
     }
 }
 
-export function editGame(id, payload) {
+export function editGame({name, id}) {    
     return async function (dispatch) {
         return await axios
-            .put(`http://localhost:3001/videogames/${id}`, payload)
+            .put(`http://localhost:3001/videogames/${id}`, {name})
             .then((info) => {
                 return dispatch({
                     type: 'EDIT_GAME',
-                    payload: info.data
+                    payload: info
                 })
             })
     };

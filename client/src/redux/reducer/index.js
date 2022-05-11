@@ -21,11 +21,11 @@ export default function rootReducer(state = initialState, { type, payload }) {
                 genres: payload
             }
 
-            case 'GET_PLATFORMS':
-                return {
-                    ...state,
-                    platforms: payload
-                }
+        case 'GET_PLATFORMS':
+            return {
+                ...state,
+                platforms: payload
+            }
 
         case 'GET_GAMES_BY_NAME':
             return {
@@ -110,9 +110,9 @@ export default function rootReducer(state = initialState, { type, payload }) {
                 ...state,
                 details: []
             }
-        
+
         case 'POST_DOG':
-            return{
+            return {
                 ...state
             }
 

@@ -71,7 +71,7 @@ router.get('/:id', async (req, res) => {
               releaseDate: game.data.released,
               img: game.data.background_image,
               rating: game.data.rating,
-              platforms: game.data.platforms.map((e) => e.platform.name)
+              platforms: game.data.platforms.map((e) => e.platform.name)              
             } 
           })
           gameApiId.length>0?
@@ -86,7 +86,8 @@ router.get('/:id', async (req, res) => {
 
 router.put("/:id", (req, res) => {
   const { id } = req.params;
-  const {name} = req.body;
+  const {name:name} = req.body; 
+
   try {
       Videogame.findByPk(id)
       .then((r) => r.update({name:name}));

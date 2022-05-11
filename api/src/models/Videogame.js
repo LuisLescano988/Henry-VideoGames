@@ -31,7 +31,7 @@ module.exports = (sequelize) => {
     img:{
       type: DataTypes.TEXT,
       defaultValue:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvQW8GFsXXIhXaXKOM_MfcHp3DKtsBjeKEuA&usqp=CAU'
-    },
+    },    
     dbCreated:{
       type: DataTypes.BOOLEAN,
       allowNull: false,

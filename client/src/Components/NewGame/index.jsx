@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getGenres, getPlatforms, postGame } from '../../redux/actions';
+import { getGames, getGenres, getPlatforms, postGame } from '../../redux/actions';
 import './index.css';
 
 const validDate = (num) => {
@@ -44,6 +44,7 @@ export default function CreateGame() {
 
     useEffect(() => {
         dispatch(getGenres())
+        dispatch(getGames())
     }, [dispatch])
 
     useEffect(() => {
@@ -67,9 +68,7 @@ export default function CreateGame() {
             genres: input.genres.includes(e.target.value)?
             [...input.genres]:
             [...input.genres, e.target.value]
-        })
-        console.log(e.target.value)
-        console.log(input.genres)
+        })        
         setErrors(validate({
             ...input,
             genres: [...input.genres, e.target.value]
@@ -128,7 +127,7 @@ export default function CreateGame() {
         }
         else if (!validDate(input.releaseDate)) {
             return alert("*Set a valid date format ==> dd/mm/yyyy")
-        }
+        }        
         else if (!input.rating) {
             return alert("*Rating is required")
         }
