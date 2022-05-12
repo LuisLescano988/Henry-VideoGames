@@ -1,18 +1,17 @@
 import axios from 'axios';
 
 export function getGames() {
-    try {
-        return function (dispatch) {
-            axios.get('http://localhost:3001/videogames')
-                .then(json => {
-                    return dispatch({
-                        type: 'GET_GAMES',
-                        payload: json.data
-                    })
+    return function (dispatch) {
+        axios.get('http://localhost:3001/videogames')
+            .then(json => {
+                return dispatch({
+                    type: 'GET_GAMES',
+                    payload: json.data
                 })
-        }
-    } catch (error) {
-        console.log(error)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
     }
 }
 
@@ -92,10 +91,10 @@ export function postGame(payload) {
     }
 }
 
-export function editGame({name, id}) {    
+export function editGame({ name, id }) {
     return async function (dispatch) {
         return await axios
-            .put(`http://localhost:3001/videogames/${id}`, {name})
+            .put(`http://localhost:3001/videogames/${id}`, { name })
             .then((info) => {
                 return dispatch({
                     type: 'EDIT_GAME',

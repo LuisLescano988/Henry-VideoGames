@@ -37,8 +37,7 @@ export default function Details() {
         setInput({
             ...input,
             [e.target.name]: e.target.value
-        })
-        console.log(e.target.value)
+        })        
     }
 
     function submitPut(e, id) {
@@ -47,8 +46,6 @@ export default function Details() {
         console.log({ name: input.name, id })        
         navigate('/main')
     }
-
-    console.log(gamedetail.releaseDate)
 
     return (
         <div className="all_detail">
