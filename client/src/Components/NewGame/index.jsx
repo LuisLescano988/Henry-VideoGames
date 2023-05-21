@@ -44,7 +44,7 @@ export default function CreateGame() {
 
     useEffect(() => {
         dispatch(getGenres())
-        dispatch(getGames())
+        dispatch(getGames())        
     }, [dispatch])
 
     useEffect(() => {
@@ -65,10 +65,10 @@ export default function CreateGame() {
     function handleSelect(e) {
         setInput({
             ...input,
-            genres: input.genres.includes(e.target.value)?
-            [...input.genres]:
-            [...input.genres, e.target.value]
-        })        
+            genres: input.genres.includes(e.target.value) ?
+                [...input.genres] :
+                [...input.genres, e.target.value]
+        })
         setErrors(validate({
             ...input,
             genres: [...input.genres, e.target.value]
@@ -78,15 +78,15 @@ export default function CreateGame() {
     function handleSelect2(e) {
         setInput({
             ...input,
-            platforms: input.platforms.includes(e.target.value)?
-            [...input.platforms]:
-            [...input.platforms, e.target.value]
+            platforms: input.platforms.includes(e.target.value) ?
+                [...input.platforms] :
+                [...input.platforms, e.target.value]
         })
         setErrors(validate({
             ...input,
             platforms: [...input.platforms, e.target.value]
         }))
-    }    
+    }
 
     function handleDelete(e) {
         setInput({
@@ -127,7 +127,7 @@ export default function CreateGame() {
         }
         else if (!validDate(input.releaseDate)) {
             return alert("*Set a valid date format ==> dd/mm/yyyy")
-        }        
+        }
         else if (!input.rating) {
             return alert("*Rating is required")
         }

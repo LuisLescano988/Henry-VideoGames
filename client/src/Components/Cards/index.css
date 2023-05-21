@@ -14,4 +14,7 @@
     position: relative;    
 }
 
-
+.delete_button{
+    position: relative;
+    text-align: right;
+}

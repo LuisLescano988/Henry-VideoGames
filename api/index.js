@@ -22,22 +22,6 @@ const { conn, Genre } = require('./src/db.js');
 // const axios = require('axios');
 // const {API_KEY} = process.env;
 
-// Syncing all the models at once.
-// function chargeGenre() {
-//   axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`)
-//   .then((resp)=>{
-//     let genreName = resp.data.results.map(gen=>gen.name)    
-    
-//     genreName.forEach(e=>{
-//       Genre.findOrCreate({
-//         where:{
-//           name: e                  
-//         }
-//       })      
-//     })
-//   })
-// }
-
 
 conn.sync({ force: true }).then(() => {  
   server.listen(3001, () => {

@@ -87,5 +87,6 @@ const apiPlatforms = () => {
 module.exports = {
     allVg,
     apiGames,
+    dbGames,
     apiPlatforms
 }

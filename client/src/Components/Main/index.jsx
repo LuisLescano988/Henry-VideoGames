@@ -3,9 +3,9 @@ import './index.css';
 import loading from '../Tools/loading.gif'
 import { useState, useEffect, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getGames, getGenres, resetDetails, filterBySource, sortByName, sortByRating, filterByGenres } from '../../redux/actions/index';
+import { getGames, getGenres, resetDetails, filterBySource, sortByName, sortByRating, filterByGenres, deleteGame } from '../../redux/actions/index';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 //ME IMPORTO EL COMPONENTE Card y renderizo en linea 
 import Cards from '../Cards/index';
 import SearchBar from '../Searchbar/index'
@@ -15,6 +15,7 @@ export default function Main() {
   const dispatch = useDispatch();
   const allGames = useSelector(state => state.videogames);
   const [, setOrder] = useState('');
+  const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(1);
   const [gamesPerPage] = useState(15);
@@ -22,6 +23,7 @@ export default function Main() {
   const indexOfFirstGame = indexOfLastGame - gamesPerPage;
   const currentGames = allGames.slice(indexOfFirstGame, indexOfLastGame);
   const pagination = (pageNumber) => setCurrentPage(pageNumber);
+  const allDbGames = allGames.filter(g => g.dbCreated)
 
   const gams = useSelector(state => state.videogames)
 
@@ -43,6 +45,13 @@ export default function Main() {
   function handleClick(e) {
     e.preventDefault();
     dispatch(getGames());
+  }
+
+  function handleAlert(e) {
+    e.preventDefault();
+    allDbGames.length < 2 ?
+      navigate("/videogames") :
+      alert("cannot post game database is full") && (navigate("/main"))
   }
 
   function handleFilterBySource(e) {
@@ -68,14 +77,10 @@ export default function Main() {
     setCurrentPage(1);
     setOrder(`Ordered ${e.target.value}`);
   }
-
-
+  
 
   return (
-
-
     <div className='all'>
-
       <div className='top_nav'>
         <div className='filters'>
 
@@ -109,9 +114,13 @@ export default function Main() {
             <option value="higher-rating">Higher Rating</option>
           </select>
         </div>
-        <Link className='create_link' to='/videogames'>
-          Post new Videogame info
-        </Link>
+        <button onClick={(e) => { handleAlert(e) }}>
+          Post new game info
+        </button>
+        {/* <Link className='create_link' to='/videogames'> */}
+        {/* Post new Videogame info */}
+        {/* </Link> */}
+
         <br />
         <SearchBar />
         <button className="btn_reload" onClick={(e) => { handleClick(e) }}>Reload Videogames!</button>
@@ -137,6 +146,7 @@ export default function Main() {
                 img={g.img ? g.img : g.img}
                 genres={g.genres}
                 platforms={g.platforms}
+                dbCreated={g.dbCreated}
               />
             );
           }) :

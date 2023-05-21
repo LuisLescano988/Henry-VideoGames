@@ -81,7 +81,8 @@ export function getDetails(id) {
 
 export function postGame(payload) {
     return function (dispatch) {
-        axios.post('http://localhost:3001/videogames', payload)
+        axios
+            .post('http://localhost:3001/videogames', payload)
             .then((info) => {
                 return dispatch({
                     type: 'POST_GAME',
@@ -94,10 +95,23 @@ export function postGame(payload) {
 export function editGame({ name, id }) {
     return async function (dispatch) {
         return await axios
-            .put(`http://localhost:3001/videogames/${id}`, { name })
+        .put(`http://localhost:3001/videogames/${id}`, { name })
+        .then((info) => {
+            return dispatch({
+                type: 'EDIT_GAME',
+                payload: info
+            })
+        })
+    };
+}
+
+export function deleteGame({name, id}) {
+    return async function (dispatch) {        
+        return await axios
+            .delete(`http://localhost:3001/videogames/del/${id}`, {name})
             .then((info) => {
                 return dispatch({
-                    type: 'EDIT_GAME',
+                    type: 'DELETE_GAME',
                     payload: info
                 })
             })

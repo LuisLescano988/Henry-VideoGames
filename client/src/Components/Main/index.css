@@ -4,7 +4,7 @@ justify-content: space-around;
 
 .create_link{
     padding: 1%;
-    text-decoration: none;
+    text-decoration: none;    
     border-radius: 6px;
     background:linear-gradient(15deg,black,red,aqua,rgb(131, 131, 0),fuchsia);
     font-weight: 800;
@@ -36,10 +36,21 @@ padding-bottom: 2%;
 .title{    
     font-size:calc(20px);
     position: absolute;
-    background:linear-gradient(15deg,black,red,aqua,rgb(131, 131, 0),fuchsia);
+    -webkit-text-stroke: 1px white;
+    background:black;
     -webkit-background-clip: text;
     background-clip:null;    
-    -webkit-text-stroke:0.5px black
+    
+}
+
+.delete_button{
+    position: relative;
+    padding-left: 85%;
+}
+
+.delete_real{
+    position: absolute;
+    margin-top: 1%;
 }
 
 .image{
@@ -160,3 +171,6 @@ padding-bottom: 2%;
     cursor: pointer;
 }
 
+.top_nav{
+    background-color: black;
+}

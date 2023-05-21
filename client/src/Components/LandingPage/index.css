@@ -1,7 +1,5 @@
 body {
-    background-image: url('../Tools/neonjoysticks.jpg');
-    background-size: cover;
-    background-position: center center;
+    background-color: rgb(139, 139, 139);
     flex-wrap: wrap;
     background-attachment: fixed;
     height: 90vh;

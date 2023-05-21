@@ -42,8 +42,7 @@ export default function Details() {
 
     function submitPut(e, id) {
         e.preventDefault();
-        dispatch(editGame({ name: input.name, id }));
-        console.log({ name: input.name, id })        
+        dispatch(editGame({ name: input.name, id }));            
         navigate('/main')
     }
 

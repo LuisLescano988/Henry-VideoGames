@@ -111,12 +111,6 @@ export default function rootReducer(state = initialState, { type, payload }) {
                 details: []
             }
 
-        case 'POST_DOG':
-            return {
-                ...state
-            }
-
-
         default: return state
     }
 }
