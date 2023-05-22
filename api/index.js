@@ -9,7 +9,7 @@
 //                / _||||| -:- |||||- \
 //               |   | \\\  -  /// |   |
 //               | \_|  ''\---/''  |_/ |
-//               \  .-\__  '-'  ___/-. /
+//               \  .-\__  '-'  ___/-. / 
 //             ___'. .'  /--.--\  `. .'___
 //          ."" '<  `.___\_<|>_/___.' >' "".
 //         | | :  `- \`.;`\ _ /`;.`/ - ` : | |
@@ -19,12 +19,11 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn, Genre } = require('./src/db.js');
-// const axios = require('axios');
-// const {API_KEY} = process.env;
+require('dotenv').config();
 
 
 conn.sync({ force: true }).then(() => {  
-  server.listen(3001, () => {
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
+  server.listen(process.env.PORT, () => {
+    console.log('%s listening at ', process.env.PORT); // eslint-disable-line no-console
   });
 });
