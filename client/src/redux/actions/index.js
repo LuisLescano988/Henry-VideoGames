@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export function getGames() {
     return function (dispatch) {
-        axios.get('http://localhost:3001/videogames')
+        axios.get('https://henry-videogames-production.up.railway.app/videogames')
             .then(json => {
                 return dispatch({
                     type: 'GET_GAMES',
@@ -18,7 +18,7 @@ export function getGames() {
 export function getGenres() {
     try {
         return function (dispatch) {
-            axios.get('http://localhost:3001/genres')
+            axios.get('https://henry-videogames-production.up.railway.app/genres')
                 .then(json => {
                     return dispatch({
                         type: 'GET_GENRES',
@@ -34,7 +34,7 @@ export function getGenres() {
 export function getPlatforms() {
     try {
         return function (dispatch) {
-            axios.get('http://localhost:3001/videogames/platforms')
+            axios.get('https://henry-videogames-production.up.railway.app/videogames/platforms')
                 .then(json => {
                     return dispatch({
                         type: 'GET_PLATFORMS',
@@ -50,7 +50,7 @@ export function getPlatforms() {
 export function getVideogameByName(payload) {
     return function (dispatch) {
         try {
-            axios.get('http://localhost:3001/videogames?name=' + payload)
+            axios.get('https://henry-videogames-production.up.railway.app/videogames?name=' + payload)
                 .then(json => {
                     return dispatch({
                         type: 'GET_GAMES_BY_NAME',
@@ -66,7 +66,7 @@ export function getVideogameByName(payload) {
 export function getDetails(id) {
     return async function (dispatch) {
         try {
-            await axios.get(`http://localhost:3001/videogames/${id}`)
+            await axios.get(`https://henry-videogames-production.up.railway.app/videogames/${id}`)
                 .then((game) => {
                     dispatch({
                         type: 'GET_GAMES_DETAILS',
@@ -82,7 +82,7 @@ export function getDetails(id) {
 export function postGame(payload) {
     return function (dispatch) {
         axios
-            .post('http://localhost:3001/videogames', payload)
+            .post('https://henry-videogames-production.up.railway.app/videogames', payload)
             .then((info) => {
                 return dispatch({
                     type: 'POST_GAME',
@@ -95,7 +95,7 @@ export function postGame(payload) {
 export function editGame({ name, id }) {
     return async function (dispatch) {
         return await axios
-        .put(`http://localhost:3001/videogames/${id}`, { name })
+        .put(`https://henry-videogames-production.up.railway.app/videogames/${id}`, { name })
         .then((info) => {
             return dispatch({
                 type: 'EDIT_GAME',
@@ -108,7 +108,7 @@ export function editGame({ name, id }) {
 export function deleteGame({name, id}) {
     return async function (dispatch) {        
         return await axios
-            .delete(`http://localhost:3001/videogames/del/${id}`, {name})
+            .delete(`https://henry-videogames-production.up.railway.app/videogames/del/${id}`, {name})
             .then((info) => {
                 return dispatch({
                     type: 'DELETE_GAME',
