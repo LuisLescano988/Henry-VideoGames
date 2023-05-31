@@ -23,7 +23,7 @@ const apiGames = () => {
                             genres: e.genres.map((g) => g.name),
                             platforms: e.platforms.map((p) => p.platform.name),
                             rating: e.rating,
-                            realeaseDate: e.released,
+                            releaseDate: e.released,
                         };
                     })
                 );            

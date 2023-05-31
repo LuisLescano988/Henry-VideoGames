@@ -1,25 +1,28 @@
 body {
-    background-color: rgb(139, 139, 139);
+    display: flex;
     flex-wrap: wrap;
+    background-color: rgb(220, 220, 220);    
     background-attachment: fixed;
     height: 90vh;
     justify-content: center;    
-    align-items: center;
+    align-items: center;    
 }
 
-.landing{
-    position: relative;      
-    padding-top: 120px;
-    top: 45%;
-    color: rgb(229, 255, 0);
-    font-family: monospace; 
-    font-size:40px;
+.landing_link{
+    text-decoration: none;
+}
+
+.landing{    
+    position: relative;          
+    font-family: monospace;
+    font-size:40px;      
+    color: rgb(190, 190, 190);
+    -webkit-text-stroke: 1px black  
 }
 
 .btn-explore{
     position: relative;
     padding-top: 40px;
-    color: fuchsia;
-    top: 45%;
+    color: black;
     
 }

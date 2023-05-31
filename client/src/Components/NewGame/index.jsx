@@ -5,13 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getGames, getGenres, getPlatforms, postGame } from '../../redux/actions';
 import './index.css';
 
-const validDate = (num) => {
-    if (num.match(/^(?:3[01]|[12][0-9]|0?[1-9])([\-/.])(0?[1-9]|1[1-2])\1\d{4}$/) && num !== '') {
-        return true;
-    } else {
-        return false;
-    }
-};
 
 const validRating = (num) => {
     if (num.match(
@@ -32,7 +25,7 @@ export default function CreateGame() {
     const navigate = useNavigate();
     const [errors, setErrors] = useState({});
     const [active, setActive] = useState(false)
-
+    
     const [input, setInput] = useState({
         name: '',
         description: '',
@@ -41,10 +34,10 @@ export default function CreateGame() {
         platforms: [],
         genres: []
     });
-
+    
     useEffect(() => {
         dispatch(getGenres())
-        dispatch(getGames())        
+        dispatch(getGames())
     }, [dispatch])
 
     useEffect(() => {
@@ -125,9 +118,6 @@ export default function CreateGame() {
         else if (!input.releaseDate) {
             return alert("*Release date is required")
         }
-        else if (!validDate(input.releaseDate)) {
-            return alert("*Set a valid date format ==> dd/mm/yyyy")
-        }
         else if (!input.rating) {
             return alert("*Rating is required")
         }
@@ -144,9 +134,9 @@ export default function CreateGame() {
             return alert("At least one Platform is required");
         }
 
-        dispatch(postGame(input))
-        alert('¡Videogame posted!')
+        dispatch(postGame(input))        
         navigate('/main')
+        dispatch(getGames())
         setInput({
             name: '',
             description: '',
@@ -192,9 +182,6 @@ export default function CreateGame() {
         else if (!input.releaseDate) {
             errors.releaseDate = "*Release date is required"
         }
-        else if (!validDate(input.releaseDate)) {
-            errors.releaseDate = "*Set a valid date format ==> dd/mm/yyyy"
-        }
         else if (!input.rating) {
             errors.rating = "*Rating is required"
         }
@@ -220,57 +207,62 @@ export default function CreateGame() {
 
     return (
         <div className='container_all'>
-            <Link to="/main" className='btn_home'>
-                Back Main menu
-            </Link>
-            <h1>Post your videogames info!</h1>
-            <form onSubmit={(e) => handleSubmit(e)}>
+            <form className='form_post' onSubmit={(e) => handleSubmit(e)}>
                 <div>
-                    <div>
-                        <label>Name: </label><br />
-                        <input
-                            type="text"
-                            value={input.name} name='name'
-                            onChange={(e) => handleChange(e)} className='input_form' />
-                        {
-                            errors.name && (
-                                <p className='error'>{errors.name}</p>
-                            )
-                        }
-                    </div>
+                    <h3>Post your videogame info</h3>
                     <div>
                         <div>
-                            <label>Description: </label><br />
+                            <label>Name: </label><br />
                             <input
                                 type="text"
-                                value={input.description}
-                                name='description'
+                                value={input.name} name='name'
                                 onChange={(e) => handleChange(e)} className='input_form' />
                             {
-                                errors.description && (
-                                    <p className='error'>{errors.description}</p>
+                                errors.name && (
+                                    <p className='error'>{errors.name}</p>
+                                )
+                            }
+                        </div>
+                        <div>
+                            <div>
+                                <label>Description: </label><br />
+                                <input
+                                    type="text"
+                                    value={input.description}
+                                    name='description'
+                                    onChange={(e) => handleChange(e)} className='input_form' />
+                                {
+                                    errors.description && (
+                                        <p className='error'>{errors.description}</p>
+                                    )
+                                }
+                            </div>
+                        </div>
+                        <div>
+                            <label>Release Date: </label><br />
+                            <input type="date" value={input.releaseDate} name='releaseDate' onChange={(e) => handleChange(e)} className='input_form' />
+                            {
+                                errors.releaseDate && (
+                                    <p className='error'>{errors.releaseDate}</p>                                    
+                                    )
+                                }
+                        </div>
+                        <div>
+                            <label>Rating: </label><br />
+                            <input type="number" value={input.rating} name='rating' onChange={(e) => handleChange(e)} className='input_form' />
+                            {
+                                errors.rating && (
+                                    <p className='error'>{errors.rating}</p>
                                 )
                             }
                         </div>
                     </div>
-                    <div>
-                        <label>Release Date: </label><br />
-                        <input type="text" value={input.releaseDate} name='releaseDate' onChange={(e) => handleChange(e)} className='input_form' />
-                        {
-                            errors.releaseDate && (
-                                <p className='error'>{errors.releaseDate}</p>
-                            )
-                        }
-                    </div>
-                    <div>
-                        <label>Rating: </label><br />
-                        <input type="number" value={input.rating} name='rating' onChange={(e) => handleChange(e)} className='input_form' />
-                        {
-                            errors.rating && (
-                                <p className='error'>{errors.rating}</p>
-                            )
-                        }
-                    </div>
+                </div>
+                <div className='platforms'>
+                        <Link to="/main" className='btn_home'>
+                            Main menu
+                        </Link>
+                        <br /><br />
                     <div>
                         <label>Platform: </label><br />
                         <select name="platforms" onChange={(e) => handleSelect2(e)}>
@@ -306,8 +298,8 @@ export default function CreateGame() {
                         )}
 
                     </div>
+                    <button type='submit' className='btn_create' disabled={!active}>Click here to post</button>
                 </div>
-                <button type='submit' className='btn_create' disabled={!active}>Click here to post</button>
             </form>
         </div>
     )

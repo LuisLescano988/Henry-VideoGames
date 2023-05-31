@@ -37,27 +37,25 @@ export default function Details() {
         setInput({
             ...input,
             [e.target.name]: e.target.value
-        })        
+        })
     }
 
     function submitPut(e, id) {
         e.preventDefault();
-        dispatch(editGame({ name: input.name, id }));            
+        dispatch(editGame({ name: input.name, id }));
         navigate('/main')
     }
 
     return (
         <div className="all_detail">
-            {
+        { 
                 Object.keys(gamedetail).length ?
                     <div className='details_container'>
-                        <div className="btn">
+                        <div className='left_details'>
                             <Link to='/Main'>
                                 <button onClick={(e) => cleanSubmit(e)}
                                     className='btn_main'>Return to Main Menu</button>
                             </Link>
-                        </div>
-                        <div className='left_details'>
                             <h2 className='name1'>NAME: {gamedetail.name.toUpperCase()}
                                 {(typeof (gamedetail.id) == 'string') ?
                                     <div>
@@ -78,15 +76,16 @@ export default function Details() {
                                     </div> : null}
                             </h2>
                             <img className="detailimg" src={gamedetail.img} alt="game"
-                                width='560px' height='290px' />
+                                />
                         </div>
-                        <div className="right_details">
+                        <div className="mid_details">
                             <h4>Genres: {gamedetail.genres.map(t => t.name ? t.name + " " : t + ' ')}</h4>
                             <h4>Release date: {gamedetail.releaseDate}</h4>
-                            <h4>Rating: {gamedetail.rating}</h4>                            
+                            <h4>Rating: {gamedetail.rating}</h4>
                             <h4>Platforms: {gamedetail.platforms.map(e => e + ' ')}</h4>
+                        </div>
+                        <div className="right_details">
                             <h5 className="descript">Description: {cleanText(gamedetail.description)}</h5>
-
                         </div>
                     </div>
                     :

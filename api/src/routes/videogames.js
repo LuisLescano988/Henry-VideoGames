@@ -32,8 +32,7 @@ router.get('/platforms', async (req, res) => {
 
 router.post('/', async (req, res) => {
   const { name, description, releaseDate, rating, platforms, img, genres } = req.body;
-  const gamesDb = await Videogame.findAll({ where: { dbCreated: true } })
-  console.log(gamesDb.length);
+  const gamesDb = await Videogame.findAll({ where: { dbCreated: true } })  
   if (!name || !description || !platforms) res.status(400).json({ msg: "insuficient filled data" })
   {
     if (gamesDb.length < 2){
@@ -68,8 +67,7 @@ router.get('/:id', async (req, res) => {
         await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)
           // apiGames()
           .then((...resp) => {
-            let gameApiId = resp.map(game => {
-              console.log(game)
+            let gameApiId = resp.map(game => {              
               return {
                 id: game.data.id,
                 name: game.data.name,

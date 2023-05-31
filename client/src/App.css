@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+body::-webkit-scrollbar {
+  width: 11px;
+}
+
+body::-webkit-scrollbar-track {
+  background: rgb(100,100,100);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(25,25,25);
+  border-radius: 20px;
+  border: 2px solid rgb(50,50,50);
+}

@@ -1,8 +1,7 @@
 .paginado {
     list-style-type: none;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 0;
+    display:contents;    
+    margin-bottom: 1%;
     
 }
 
@@ -13,15 +12,14 @@
 }
 
 .paginas{
+    margin: 0 0 25px 0;
     height: 2rem;
     width: 2rem;
-    color:white;
-    border-radius: 45%;
-    border-color: fuchsia;
-    -webkit-text-stroke: 1px white;
+    border-radius: 4%;    
+    -webkit-text-stroke: 1px rgb(250,250,250);
     background: linear-gradient(
-        rgb(255, 1, 255) 50%,
-        transparent 50%
+        rgb(41, 41, 41) 50%,
+        rgb(140, 140, 140)
     );    
 }
 

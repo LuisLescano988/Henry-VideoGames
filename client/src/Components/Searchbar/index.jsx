@@ -26,13 +26,13 @@ export default function SearchBar() {
 
 
     return (
-        <div>
+        <div className='search_bar'>
             <form onSubmit={(g) => handleSubmit(g)}>
                 <input
                     type='text'
                     placeholder="Buscar Juego..."
                     onChange={(g) => handInputChange(g)} />
-                <button type='submit'>Buscar</button>
+                <button className='button_search' type='submit'>Buscar</button>
             </form>
         </div>
     )
