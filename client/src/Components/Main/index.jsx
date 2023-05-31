@@ -139,7 +139,7 @@ export default function Main() {
         </div>
       </div>
 
-      <h1 className='web_title'>GGG Gaming Info LOGO</h1>
+      <h1 className='web_title'>GGG Gaming Info</h1>
 
       <div className='dad_container'>
         <div className='container'>
